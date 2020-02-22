@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">St.Francis House</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dashboard">Donations</string>
+    <string name="title_notifications">Events</string>
     <string name="title_activity_donation">Donation</string>
 
     <!-- TODO: Remove or change this placeholder text -->

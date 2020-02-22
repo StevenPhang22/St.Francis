@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home hello" />
+        android:id="@+id/textView2"
+        android:layout_width="353dp"
+        android:layout_height="399dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Our first priority is to provide homeless families with children a safe and secure shelter with caring staff and volunteers. Our goal is to transition these families from homelessness, with the support of case management and other agency referrals, into permanent housing.\n\nDuring their stay, we focus on creating a partnership between case management and the families. We provide an intake process with individualized case plans that include realistic outcomes, while actively listening, coaching, and providing feedback to overcoming obstacles.\n\nWe set daily, weekly and monthly goals that we expect our clients to achieve through their hard work and our encouragement.\n\n\n\n413 S. Main Street
+Gainesville, FL 32601\nPh 352-378-9079\nstfrancishousegnv.org"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="185dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/stfrancislogo"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
