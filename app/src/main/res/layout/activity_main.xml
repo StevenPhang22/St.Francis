@@ -7,14 +7,21 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-21dp"
+        tools:layout_editor_absoluteY="91dp">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_width="374dp"
+        android:layout_height="483dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/title_home"
+        android:text="Our first priority is to provide homeless families with children a safe and secure shelter with caring staff and volunteers. Our goal is to transition these families from homelessness, with the support of case management and other agency referrals, into permanent housing.\n\nDuring their stay, we focus on creating a partnership between case management and the families. We provide an intake process with individualized case plans that include realistic outcomes, while actively listening, coaching, and providing feedback to overcoming obstacles.\n\nWe set daily, weekly and monthly goals that we expect our clients to achieve through their hard work and our encouragement."
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
