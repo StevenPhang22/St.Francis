@@ -1,18 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DonateFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="731dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="373dp"
-        android:layout_height="312dp"
-        android:text="Financial  Day Client Benefits: Case Management (Appointments Only) Brunch (3 Hours Daily) Bathroom Facilities Hygiene and Clothing Items (Based on Donations) Coined Laundry Facilities (Laundry Detergent Provided) Telephone, Fax and Notary Services Information and Agency Referrals 24 Hour On-Site Staffing  PO Box 12491 Gainesville, FL 32604 stfrancishousegnv.org • Food Meat (Breakfast and Lunch) Eggs Milk Cereal Canned Goods Coffee • Hygiene Products Toilet Paper Razors Deodorant Shampoo Paper Towels Bar Soap Feminine Products Toothbrushes Toothpaste" />
+        android:layout_height="564dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Financial:\n\tPO Box 12491
+\n\tGainesville, FL 32604
+\n\tstfrancishousegnv.org
+\n• Food
+\n\tMeat (Breakfast and Lunch)
+\n\tEggs
+\n\tMilk
+\n\tCereal
+\n\tCanned Goods
+\n\tCoffee
+\n• Hygiene Products
+\n\tToilet Paper
+\n\tRazors
+\n\tDeodorant
+\n\tShampoo
+\n\tPaper Towels
+\n\tBar Soap
+\n\tFeminine Products
+\n\tToothbrushes
+\n\tToothpaste"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
