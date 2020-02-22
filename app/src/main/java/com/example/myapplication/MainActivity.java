@@ -13,11 +13,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
-
-    Intent notificationsIntent = new Intent(this,MainNotificationsActivity.class);
-    Intent homeIntent = new Intent(this,MainActivity.class);
-    Intent donateIntent = new Intent(this,MainDonateActivity.class);
-
+    private Intent intents [] = new Intent [3];
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -26,18 +22,21 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.navigation_home: {
                     //mTextMessage.setText(R.string.title_home);
-                    startActivity(homeIntent);
+                    startActivity(intents[0]);
                     return true;
-                case R.id.navigation_dashboard:
+                }
+                case R.id.navigation_dashboard: {
                     //mTextMessage.setText(R.string.title_dashboard);
-                    startActivity(donateIntent);
+                    startActivity(intents[1]);
                     return true;
-                case R.id.navigation_notifications:
+                }
+                case R.id.navigation_notifications: {
                     //mTextMessage.setText(R.string.title_notifications);
-                    startActivity(notificationsIntent);
+                    startActivity(intents[2]);
                     return true;
+                }
             }
             return false;
         }
@@ -49,8 +48,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
+
+        intents[0] = new Intent(this,MainNotificationsActivity.class);
+        intents[1] = new Intent(this,MainActivity.class);
+        intents[2] = new Intent(this,MainDonateActivity.class);
+
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        mTextMessage.setText("This text is for the home menu.");
+        mTextMessage.setText(R.string.title_home);
     }
 
 }
