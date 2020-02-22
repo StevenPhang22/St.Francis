@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -13,8 +12,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
-    private Intent intents [] = new Intent [3];
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -22,21 +19,15 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home: {
-                    //mTextMessage.setText(R.string.title_home);
-                    startActivity(intents[0]);
+                case R.id.navigation_home:
+                    mTextMessage.setText(R.string.title_home);
                     return true;
-                }
-                case R.id.navigation_dashboard: {
-                    //mTextMessage.setText(R.string.title_dashboard);
-                    startActivity(intents[1]);
+                case R.id.navigation_dashboard:
+                    mTextMessage.setText(R.string.title_dashboard);
                     return true;
-                }
-                case R.id.navigation_notifications: {
-                    //mTextMessage.setText(R.string.title_notifications);
-                    startActivity(intents[2]);
+                case R.id.navigation_notifications:
+                    mTextMessage.setText(R.string.title_notifications);
                     return true;
-                }
             }
             return false;
         }
@@ -48,13 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
-
-        intents[0] = new Intent(this,MainNotificationsActivity.class);
-        intents[1] = new Intent(this,MainActivity.class);
-        intents[2] = new Intent(this,MainDonateActivity.class);
-
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        mTextMessage.setText(R.string.title_home);
     }
 
 }
