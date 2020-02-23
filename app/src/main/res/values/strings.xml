@@ -4,6 +4,26 @@
     <string name="title_dashboard">Donations</string>
     <string name="title_notifications">Events</string>
     <string name="title_activity_donation">Donation</string>
+    <string name="title_donations">Financial:\n\tPO Box 12491
+\n\tGainesville, FL 32604
+\n\tstfrancishousegnv.org
+\n• Food
+\n\tMeat (Breakfast and Lunch)
+\n\tEggs
+\n\tMilk
+\n\tCereal
+\n\tCanned Goods
+\n\tCoffee
+\n• Hygiene Products
+\n\tToilet Paper
+\n\tRazors
+\n\tDeodorant
+\n\tShampoo
+\n\tPaper Towels
+\n\tBar Soap
+\n\tFeminine Products
+\n\tToothbrushes
+\n\tToothpaste</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
