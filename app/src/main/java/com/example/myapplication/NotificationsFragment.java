@@ -39,10 +39,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javax.xml.parsers.SAXParserFactory;
 
 public class NotificationsFragment extends Fragment {
 
@@ -222,5 +225,12 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public int getItemCount() {
         return mDataset.length;
+    }
+}
+
+
+    protected void onPostExecute(RSSFeed feed) {
+        // TODO: check this.exception
+        // TODO: do something with the feed
     }
 }
