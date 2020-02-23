@@ -19,30 +19,13 @@
         android:id="@+id/textView"
         android:layout_width="373dp"
         android:layout_height="564dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Financial:\n\tPO Box 12491
-\n\tGainesville, FL 32604
-\n\tstfrancishousegnv.org
-\n• Food
-\n\tMeat (Breakfast and Lunch)
-\n\tEggs
-\n\tMilk
-\n\tCereal
-\n\tCanned Goods
-\n\tCoffee
-\n• Hygiene Products
-\n\tToilet Paper
-\n\tRazors
-\n\tDeodorant
-\n\tShampoo
-\n\tPaper Towels
-\n\tBar Soap
-\n\tFeminine Products
-\n\tToothbrushes
-\n\tToothpaste"
+        android:text="@string/title_donations"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
