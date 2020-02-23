@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/fragment6"
-        android:name="com.example.myapplication.HomeFragment"
+        android:name="com.example.myapplication.BlankFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
