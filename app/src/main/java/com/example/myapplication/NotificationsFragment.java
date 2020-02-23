@@ -126,8 +126,10 @@ public class NotificationsFragment extends Fragment {
         System.out.println(in);
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
-        File tokenFolder = new File(Environment.getExternalStorageDirectory() +
-                File.separator + TOKENS_DIRECTORY_PATH);
+        File tokenFolder = new File(getActivity().getExternalFilesDir("")+ File.separator + TOKENS_DIRECTORY_PATH);
+
+        //File tokenFolder = new File(Environment.getExternalStorageDirectory() +
+        //        File.separator + TOKENS_DIRECTORY_PATH);
         if (!tokenFolder.exists()) {
             tokenFolder.mkdirs();
         }
