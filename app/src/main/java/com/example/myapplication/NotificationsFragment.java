@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,6 +61,8 @@ public class NotificationsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.notifications_fragment, container, false);
+
+
     }
 
     @Override
@@ -66,6 +70,7 @@ public class NotificationsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(NotificationsViewModel.class);
         // TODO: Use the ViewModel
+
         View view = getView();
         Context context = getActivity();
         if (view != null)
@@ -75,8 +80,10 @@ public class NotificationsFragment extends Fragment {
             rv.setHasFixedSize(true);
             layoutManager = new LinearLayoutManager(context);
             rv.setLayoutManager(layoutManager);
+            System.out.println("##");
             String [] str;
             try {
+                System.out.println("###");
                 str = go();
             } catch (Exception e) {
                 str = new String [3];
@@ -87,7 +94,6 @@ public class NotificationsFragment extends Fragment {
             mAdapter = new MyAdapter(str);
             rv.setAdapter(mAdapter);
         }
-
     }
 
     private static final String APPLICATION_NAME = "Google Calendar API Java Quickstart";
@@ -111,17 +117,26 @@ public class NotificationsFragment extends Fragment {
         // Load client secrets.
         //InputStream in = NotificationsFragment.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
         InputStream in = null;
+        System.out.println("Cat###\n");
         try{
             in = getResources().openRawResource(R.raw.credentials);
         } catch(Exception e) {
             getActivity().finish();
         }
+        System.out.println(in);
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+
+        File tokenFolder = new File(Environment.getExternalStorageDirectory() +
+                File.separator + TOKENS_DIRECTORY_PATH);
+        if (!tokenFolder.exists()) {
+            tokenFolder.mkdirs();
+        }
+
 
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
-                .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
+                .setDataStoreFactory(new FileDataStoreFactory(tokenFolder))
                 .setAccessType("offline")
                 .build();
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
@@ -130,10 +145,15 @@ public class NotificationsFragment extends Fragment {
 
     public String [] go() throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
+        System.out.println("$$");
         List<String> result = new ArrayList<String>();
-
-        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        Calendar service = new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+        System.out.println("$$85");
+        final NetHttpTransport HTTP_TRANSPORT = new com.google.api.client.http.javanet.NetHttpTransport();
+        System.out.println("$#");
+        Credential creds = getCredentials(HTTP_TRANSPORT);
+        System.out.println("$");
+        System.out.println(creds);
+        Calendar service = new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, creds)
                 .setApplicationName(APPLICATION_NAME)
                 .build();
 
