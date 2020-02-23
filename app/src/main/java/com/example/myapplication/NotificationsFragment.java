@@ -229,10 +229,3 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return mDataset.length;
     }
 }
-
-
-    protected void onPostExecute(RSSFeed feed) {
-        // TODO: check this.exception
-        // TODO: do something with the feed
-    }
-}
