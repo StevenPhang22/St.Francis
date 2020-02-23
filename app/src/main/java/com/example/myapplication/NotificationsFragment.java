@@ -55,6 +55,7 @@ public class NotificationsFragment extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private TextView tv;
+    public final List<String> str = new ArrayList<String>();
 
     public static NotificationsFragment newInstance() {
         return new NotificationsFragment();
@@ -84,17 +85,30 @@ public class NotificationsFragment extends Fragment {
             layoutManager = new LinearLayoutManager(context);
             rv.setLayoutManager(layoutManager);
             System.out.println("##");
-            String [] str;
-            try {
+            final String[][] str = new String[1][1];
+            Thread thread = new Thread(new Runnable() {
+
+                @Override
+                public void run() {
+                    try  {
+                        go();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            thread.start();
+            /*try {
                 System.out.println("###");
-                str = go();
+                go();
             } catch (Exception e) {
-                str = new String [3];
-                str[0] =  e.toString();
-                str[1] = "(An exception occurred trying to access Google Cloud:)";
-                str[2] = e.toString();
-            }
-            mAdapter = new MyAdapter(str);
+                str[0] = new String [3];
+                str[0][0] =  e.toString();
+                str[0][1] = "(An exception occurred trying to access Google Cloud:)";
+                str[0][2] = e.toString();
+            }*/
+            mAdapter = new MyAdapter(str[0]);
             rv.setAdapter(mAdapter);
         }
     }
@@ -148,10 +162,9 @@ public class NotificationsFragment extends Fragment {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
-    public String [] go() throws IOException, GeneralSecurityException {
+    public void go() throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
         System.out.println("$$");
-        List<String> result = new ArrayList<String>();
         System.out.println("$$85");
         final NetHttpTransport HTTP_TRANSPORT = new com.google.api.client.http.javanet.NetHttpTransport();
         System.out.println("$#");
@@ -172,18 +185,18 @@ public class NotificationsFragment extends Fragment {
                 .execute();
         List<Event> items = events.getItems();
         if (items.isEmpty()) {
-            result.add("No upcoming events found.");
+            str.add("No upcoming events found.");
         } else {
-            result.add("Upcoming events");
+            str.add("Upcoming events");
             for (Event event : items) {
                 DateTime start = event.getStart().getDateTime();
                 if (start == null) {
                     start = event.getStart().getDate();
                 }
-                result.add(String.format("%s (%s)\n", event.getSummary(), start));
+                str.add(String.format("%s (%s)\n", event.getSummary(), start));
             }
         }
-        return result.toArray(new String[11]);
+        //return result;
     }
 
 }
@@ -229,3 +242,5 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return mDataset.length;
     }
 }
+
+
