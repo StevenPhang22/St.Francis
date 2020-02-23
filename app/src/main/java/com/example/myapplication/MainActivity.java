@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         //mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         //fragment = getSupportFragmentManager().findFragmentById(R.id.fragment);
+        swapFragment(new HomeFragment());
     }
 
     protected void swapFragment(Fragment f)
